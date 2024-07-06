@@ -19,7 +19,7 @@ import per.lcy.masterdessertation.entity.OrganicSearchResult;
 
 public class SearchUtil {
     public static Logger logger = LoggerFactory.getLogger(SearchUtil.class);
-    public static String searchApiKey = "fdbb219f94866719954a6bd413f9110bf86ed60bcf7e28515e2eb4211136008a";
+    public static String searchApiKey = "";
     public static String searchResultUrl = "https://serpapi.com/search.json?engine=%s&q=%s&hl=en&api_key=%s";
     public static String searchCitationUrl = "https://serpapi.com/search.json?engine=%s&q=%s&api_key=%s";
     public static String engineScholar = "google_scholar";

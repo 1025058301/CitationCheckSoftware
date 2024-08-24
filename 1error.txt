@@ -1,0 +1,122 @@
+0
+Ada,A.F. is missed. A,A.F. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2007 . 
+Errors in tittle, correct tittle is:A Lifetime of Learning to Teach.
+ Errors in journal's name, correct is:Journal of Latinos & Education.
+ Errors in journal's pages, correct is:pp.103-118.
+1
+Webber,S. is missed. Web,S. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2007 . 
+Errors in tittle, correct tittle is:A phenomenographic study of English faculty's conceptions of information literacy.
+ Errors in journal's name, correct is:Journal of Documentation.
+ Errors in journal's volume and Issue, correct is:[e-journal] 63(2).
+Errors in DOI, correct is: https://doi. org/10.1108/00220410710737187.
+2
+Al-Benna,S. is missed. Benna,S. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2009 . 
+Errors in tittle, correct tittle is:Accuracy of references in burns journals?
+ Errors in journal's name, correct is:Burns.
+ Errors in journal's pages, correct is:pp.677-680.
+3
+Behera,R.N. is missed. Be,R.N. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2017 . 
+Errors in tittle, correct tittle is:A survey on machine learning: concept, algorithms and applications.
+ Errors in journal's name, correct is:International Journal of Innovative Research in Computer and Communication Engineering.
+ Errors in journal's volume and Issue, correct is:5(2).
+4
+Seglen,P.O. is missed. Seglen,P. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:1997 . 
+Errors in tittle, correct tittle is:Why the impact factor of journals should not be used for evaluating research.
+ Errors in journal's name, correct is:Bmj.
+ Errors in journal's volume and Issue, correct is:314(7079).
+ Errors in journal's pages, correct is:p.497.
+5
+Can not identify "Ka, E., 1959." belongs to which part. Please check it.  Component:authorAndYear is miss.
+Publish year is wrong. Correct publish year is:1959 . 
+Errors in tittle, correct tittle is:Mass communications research and the study of popular culture: An editorial note on a possible future for this journal.
+ Errors in journal's name, correct is:Studies in public communication.
+ Errors in journal's volume and Issue, correct is:2(1). Errors in journal's pages, correct is:pp.1-6.
+6
+Kinney,J. is missed. Jeejeebhoy,K. is missed. Kinney,J.K. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:1997 . 
+Errors in tittle, correct tittle is:Nutrition support in clinical practice: review of published data and recommendations for future research directions: summary of a conference sponsored by the National Institutes of Health, American Society for Parenteral and Enteral Nutrition, and American Society for Clinical Nutrition.
+ Errors in journal's name, correct is:Journal of Parenteral and Enteral Nutrition.
+ Errors in journal's pages, correct is:pp.133-156.
+7
+ Errors in conference part, correct is:In Journal of physics: conference series. Component:authorAndYear is miss.
+Publish year is wrong. Correct publish year is:2018, November .  Errors in conference part, correct is:In Journal of physics: conference series.The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,volumeIssue,pages,publisher
+Errors in tittle, correct tittle is:Machine learning from theory to algorithms: an overview. Errors in conference part, correct is:In Journal of physics: conference series.The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,volumeIssue,pages,publisher
+ Errors in conference part, correct is:In Journal of physics: conference series.The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,volumeIssue,pages,publisher
+Errors in volume and issue, correct is:Vol. 1142Errors in pages, correct is:p. 012012 Errors in conference part, correct is:In Journal of physics: conference series.The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,volumeIssue,pages,publisher
+ Errors in conference part, correct is:In Journal of physics: conference series.Can not identify "IOP g." belongs to which part. Please check it.  Component:publisher is miss.
+8
+ Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom). Component:authorAndYear is miss.
+Publish year is wrong. Correct publish year is:2016, March .  Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Errors in tittle, correct tittle is:A review of supervised machine learning algorithms. Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Errors in pages, correct is:pp. 1310-1315 Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2016 3rd international conference on computing for sustainable global development (INDIACom).Errors in publisher, correct publisher is:IeeeThe order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+9
+Sinanc,D. is missed. anc,D. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &. Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Publish year is wrong. Correct publish year is:2013, May .  Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Errors in tittle, correct tittle is:Big data: A review. Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Errors in pages, correct is:pp. 42-47 Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2013 international conference on collaboration technologies and systems (CTS).Errors in publisher, correct publisher is:IEEEThe order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+10
+VandenBergh,J. is missed. Vandeergh,J. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &. Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Berlin Heidelberg." belongs to which part. Please check it. 
+Publish year is wrong. Correct publish year is:2007 .  Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Berlin Heidelberg." belongs to which part. Please check it. 
+Errors in tittle, correct tittle is:The process-oriented organisation: a holistic view developing a framework for business process orientation maturity. Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Berlin Heidelberg." belongs to which part. Please check it. 
+ Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Berlin Heidelberg." belongs to which part. Please check it. 
+ Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in pages, correct is:pp. 1-15Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Berlin Heidelberg." belongs to which part. Please check it. 
+ Errors in conference part, correct is:In Business Process Management: 5th International Conference, BPM 2007, Brisbane, Australia, September 24-28, 2007.Errors in publisher, correct publisher is:Proceedings 5Can not identify "Springer Belberg." belongs to which part. Please check it. 
+11
+ Errors in conference part, correct is:In UNDESA (United Nations Department of Economic and Social Affairs), 6th Global forum on reinventing government: towards participatory and transparent governance.Errors in publisher, correct publisher is:Seoul, Republic of Korea Component:authorAndYear is miss.
+ Errors in conference part, correct is:In UNDESA (United Nations Department of Economic and Social Affairs), 6th Global forum on reinventing government: towards participatory and transparent governance.Errors in publisher, correct publisher is:Seoul, Republic of Korea Component:authorAndYear is miss.
+Errors in tittle, correct tittle is:Evaluating surveys of transparent governance. Errors in conference part, correct is:In UNDESA (United Nations Department of Economic and Social Affairs), 6th Global forum on reinventing government: towards participatory and transparent governance.Errors in publisher, correct publisher is:Seoul, Republic of Korea Component:authorAndYear is miss.
+ Errors in conference part, correct is:In UNDESA (United Nations Department of Economic and Social Affairs), 6th Global forum on reinventing government: towards participatory and transparent governance.Errors in publisher, correct publisher is:Seoul, Republic of Korea Component:authorAndYear is miss.
+ Errors in conference part, correct is:In UNDESA (United Nations Department of Economic and Social Affairs), 6th Global forum on reinventing government: towards participatory and transparent governance.Errors in publisher, correct publisher is:Seoul, Republic of Korea Component:authorAndYear is miss.
+12
+Chaintreau,A. is missed. Chaiau,A. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &. Errors in conference part, correct is:In Proceedings of the 2005 ACM SIGCOMM workshop on Delay-tolerant networking (pp. Component:publisher is miss.
+Publish year is wrong. Correct publish year is:2005, August .  Errors in conference part, correct is:In Proceedings of the 2005 ACM SIGCOMM workshop on Delay-tolerant networking (pp. Component:publisher is miss.
+Errors in tittle, correct tittle is:Pocket switched networks and human mobility in conference environments. Errors in conference part, correct is:In Proceedings of the 2005 ACM SIGCOMM workshop on Delay-tolerant networking (pp. Component:publisher is miss.
+ Errors in conference part, correct is:In Proceedings of the 2005 ACM SIGCOMM workshop on Delay-tolerant networking (pp. Component:publisher is miss.
+Errors in pages, correct is:pp. 244-251 Errors in conference part, correct is:In Proceedings of the 2005 ACM SIGCOMM workshop on Delay-tolerant networking (pp. Component:publisher is miss.
+13
+Demchenko,Y. is missed. Demchessnko,Y. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &. Errors in conference part, correct is:In 2013 International conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Publish year is wrong. Correct publish year is:2013, May .  Errors in conference part, correct is:In 2013 International conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+Errors in tittle, correct tittle is:Addressing big data issues in scientific data infrastructure. Errors in conference part, correct is:In 2013 International conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2013 International conference on collaboration technologies and systems (CTS).The order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+ Errors in conference part, correct is:In 2013 International conference on collaboration technologies and systems (CTS).Errors in publisher, correct publisher is:IEEEThe order of component of your citation is wrong. Correct order is: authorAndYear,tittle,conference,pages,publisher
+14
+Boyes,W.ed. is missed. Bos,W.ed. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2009 . 
+Errors in tittle, correct tittle is:Instrumentation reference book.
+Errors in publisher, correct publisher is:Butterworth-Heinemann
+15
+Baier,C. is missed. Bair,C. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2008 . 
+Errors in tittle, correct tittle is:Principles of model checking.
+Errors in publisher, correct publisher is:MIT press
+16
+Campbell,J. is missed. Campbasdell,J. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2002 . 
+Errors in tittle, correct tittle is:Reference and consciousness.
+Errors in publisher, correct publisher is:Clarendon Press
+17
+Borel,B. is missed. Borasel,B. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2023 . 
+Errors in tittle, correct tittle is:The Chicago guide to fact-checking.
+Errors in publisher, correct publisher is:University of Chicago Press
+18
+Burkholder,C. is missed. Bulder,C. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2020 . 
+Errors in tittle, correct tittle is:Fieldnotes in qualitative education and social science research.
+Errors in publisher, correct publisher is:New York, NY: Routledge
+Errors in DOI, correct is: https://doi. org/10.4324/9780429275821.
+19
+Michie,R. is missed. Mich,R. is not the author. Check that you are properly separating authors with commas and connecting the last two authors with and or &.
+Publish year is wrong. Correct publish year is:2012 . 
+Errors in tittle, correct tittle is:The London and New York Stock Exchanges 1850-1914 (Routledge Revivals).
+Errors in publisher, correct publisher is:Routledge
+Errors in DOI, correct is: https://doi.org/10.4324/9780203818510.

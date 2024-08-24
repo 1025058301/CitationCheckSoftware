@@ -15,17 +15,18 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import per.lcy.masterdessertation.entity.CitationStyle;
+import per.lcy.masterdessertation.entity.CustomException;
 import per.lcy.masterdessertation.entity.OrganicSearchResult;
 
 public class SearchUtil {
     public static Logger logger = LoggerFactory.getLogger(SearchUtil.class);
-    public static String searchApiKey = "";
+    public static String searchApiKey = "fdbb219f94866719954a6bd413f9110bf86ed60bcf7e28515e2eb4211136008a";
     public static String searchResultUrl = "https://serpapi.com/search.json?engine=%s&q=%s&hl=en&api_key=%s";
     public static String searchCitationUrl = "https://serpapi.com/search.json?engine=%s&q=%s&api_key=%s";
     public static String engineScholar = "google_scholar";
     public static String engineScholarCite = "google_scholar_cite";
 
-    public static OrganicSearchResult searchResultIdFromInfo(String queryInfo) {
+    public static OrganicSearchResult searchResultIdFromInfo(String queryInfo) throws CustomException {
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String encodedQueryInfo = URLEncoder.encode(queryInfo, StandardCharsets.UTF_8);
@@ -42,11 +43,11 @@ public class SearchUtil {
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return null;
+            throw new CustomException("Some errors occurred while requesting a standard reference using a third-party api.");
         }
     }
 
-    public static boolean searchCitationFromResultId(OrganicSearchResult result) {
+    public static boolean searchCitationFromResultId(OrganicSearchResult result) throws CustomException {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String fullUrl = String.format(searchCitationUrl, engineScholarCite, result.getResult_id(), searchApiKey);
             HttpGet request = new HttpGet(fullUrl);
@@ -61,15 +62,14 @@ public class SearchUtil {
                 return true;
             }
         } catch (Exception e) {
-            logger.error(e.getMessage());
-            logger.error(Arrays.toString(e.getStackTrace()));
-            return false;
+            logger.error(e.getMessage(),e);
+            throw new CustomException("Some errors occurred while requesting a standard reference using a third-party api.");
         }
     }
 
-    public static String searchCitationFromQueryInfo(String queryInfo, CitationStyle citationStyle) {
+    public static String searchCitationFromQueryInfo(String queryInfo, CitationStyle citationStyle) throws CustomException {
         OrganicSearchResult res = searchResultIdFromInfo(queryInfo);
-        if (res == null||!searchCitationFromResultId(res)) return null;
+        if (!searchCitationFromResultId(res)) return null;
         return res.getCitation(citationStyle.name());
     }
 

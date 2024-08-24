@@ -7,6 +7,7 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import per.lcy.masterdessertation.entity.CustomException;
 import per.lcy.masterdessertation.entity.HarvardCitation;
 import org.apache.commons.text.similarity.JaccardSimilarity;
 
@@ -19,7 +20,7 @@ public class CitationProcessUtil {
     public static Logger logger = LoggerFactory.getLogger(CitationProcessUtil.class);
     public static JaccardSimilarity jaccardSimilarity = new JaccardSimilarity();
 
-    public static String getReferencesFromText(String text) {
+    public static String getReferencesFromText(String text) throws CustomException {
         String regexFull = "(References|REFERENCES|Bibliography|BIBLIOGRAPHY)\\s+[\\[\\(].*";
         String regexPartition = "(References|REFERENCES|Bibliography|BIBLIOGRAPHY)";
         // Correctly identify the References section
@@ -31,24 +32,20 @@ public class CitationProcessUtil {
         if (matcherFull.find()) {
             return matcherFull.group();
         } else if (matcherPartition.find()) {
-            logger.warn("Each reference should be preceded by [] or () to indicate the order,please check it");
-            return null;
+            throw new CustomException("Each reference should be preceded by [] or () to indicate the order,please check it.");
         } else {
-            logger.warn("The referenced part of the document is not recognized, the section name for the referenced part should be REFERENCES or BIBLIOGRAPHY");
-            return null;
+            throw new CustomException("The referenced part of the document is not recognized, the section name for the referenced part should be REFERENCES or BIBLIOGRAPHY.");
         }
     }
 
-    public static String[] spiltReferences(String references) {
+    public static String[] spiltReferences(String references) throws CustomException {
         if (references == null) {
-            logger.warn("The references input is null. ");
-            return null;
+            throw new CustomException("The user references input is null.");
         }
         String spiltRegex = "(?=\\[\\d+\\])";// match [1],[2]...
         String[] referencesArray = references.split(spiltRegex);
         if (referencesArray.length <= 1) {
-            logger.warn("The reference section does not have any citations, or the citations do not start with the format [].");
-            return null;
+            throw new CustomException("The user reference section does not have any citations, or the citations do not start with the format [].");
         }
         // remove the first element: References...,ensure each element is a reference
         return Arrays.copyOfRange(referencesArray, 1, referencesArray.length);
@@ -59,6 +56,7 @@ public class CitationProcessUtil {
         // 匹配作者部分，发表时间，文章标题，和剩下的部分
         // Match the author section, publication date, article title, and the rest of the section
         String regex = "(.*?)(\\d{4}[^.]*)\\.([^.]+?[\\.?])(.+)";
+        String authorYearRegex = "(.*?\\d+[^.\\d]*)\\.";
         String urlRegex = "(https?://doi.\\s*org[^\\s]+|https?://[^\\s]+|10\\.\\d{4,9}/[-._;()/:A-Z0-9]+)";
         //匹配 in 的会议格式，将第二部分作为发版商
         //Match the conference format of in and use the second part as the publisher
@@ -97,6 +95,7 @@ public class CitationProcessUtil {
             logger.error("fail to extract different part from standard citation");
             return null;
         }
+        String authorAndYear=getMatchGroups(standardCitation,authorYearRegex).get(0);
         // 分割得到作者字符串数组
         String[] authorsArray = authors.substring(0, authors.length() - 2).replaceAll("\\s+", "").split("\\.(,|and|&)");
         authors = convertArrayToString(authorsArray, ";");
@@ -140,6 +139,7 @@ public class CitationProcessUtil {
         //将信息存入hashmap中
         res.put("authors", authors);
         res.put("year", year);
+        res.put("authorAndYear",authorAndYear);
         res.put("tittle", title);
         res.put("conference", conference);
         res.put("journalName", journalName);
@@ -154,7 +154,7 @@ public class CitationProcessUtil {
 
     public static String processUserHarvardCitation(String userCitation, Map<String, String> standardCitation) {
         StringBuilder feedback = new StringBuilder();
-        String authorYearRegex = "(.*?)(\\d{4}[^.\\d]*)\\.";
+        String authorYearRegex = "(.*?)(\\d+[^.\\d]*)\\.";
         String urlRegex = ".*?(10\\.\\d{4,9}/[-._;()/:A-Z0-9]+)";
         String journalRegex = "^([^,]+),\\s*([^,]+),\\s*(pp?\\.?\\s*\\w+(-\\d+)?)";
         String conferenceRegex = "^(In[\\s:].+?)(?:\\([^\\)]+\\))?";
@@ -169,7 +169,7 @@ public class CitationProcessUtil {
         // 判断用户传入的引用是否与标准引用完全吻合
         // Determines whether the reference user passed matches the standard reference exactly
         if (userCitation.trim().equals(standardCitation.get("standardCitation"))) {
-            feedback.append("Perfect citation!");
+            feedback.append("No errors!");
             return feedback.toString();
         }
         userCitation = preprocess(userCitation);
@@ -188,7 +188,7 @@ public class CitationProcessUtil {
 
             for (Map.Entry<String, String> entry : standardCitation.entrySet()) {
                 String key = entry.getKey();
-                if (key.isEmpty() || key.equals("standardCitation") || key.equals("journalName") || key.equals("volumeIssue") || key.equals("pages"))
+                if (key.isEmpty() || key.equals("standardCitation") || key.equals("journalName") || key.equals("volumeIssue") || key.equals("pages")||key.equals("authors")||key.equals("year"))
                     continue;
                 // 计算当前句子与标准引用中每个部分的相似度，寻找最相似的部分
                 // calculate the similarity between the current sentence and each part in the standard citation to find the most similar part
@@ -266,21 +266,25 @@ public class CitationProcessUtil {
             switch (bestKey) {
                 // 识别到该句子是作者与发布年份部分
                 // Recognize that the sentence is the author and the year of publication part
-                case "authors" -> {
+                case "authorAndYear" -> {
                     List<String> authorAndYear = getMatchGroups(part, authorYearRegex);
                     if (authorAndYear.size() < 2) {
-                        feedback.append("Can't not identify publish year. Please check whether the citation contains it");
+                        feedback.append("Can't not identify publish year. Please check whether the citation contains it. ");
+                        userCitationComponent.add("authorAndYear");
                         continue;
                     } else {
                         String inputAuthors = authorAndYear.get(0);
                         String[] inputAuthorsArray = inputAuthors.substring(0, inputAuthors.length() - 2).replaceAll("\\s+", "").split("\\.(,|and|&)");
                         String[] standardAuthorsArray = bestMatch.split(";");
-                        feedback.append(authorsPartFeedback(inputAuthorsArray, standardAuthorsArray));
+                        String authorFeedback=authorsPartFeedback(inputAuthorsArray, standardAuthorsArray);
+                        if(!authorFeedback.isEmpty()){
+                            feedback.append(authorFeedback);
+                        }
                     }
                     String inputPublishYear = authorAndYear.get(1);
                     String standardPublishYear = standardCitation.get("year");
                     if (!inputPublishYear.equals(standardPublishYear)) {
-                        feedback.append("Publish year is wrong. Correct publish year is:").append(standardPublishYear);
+                        feedback.append("Publish year is wrong. Correct publish year is:").append(standardPublishYear).append(" . ");
                     }
                     userCitationComponent.add("authorAndYear");
                 }
@@ -337,6 +341,7 @@ public class CitationProcessUtil {
             if (!find) {
                 miss = true;
                 feedback.append(" Component:").append(standardComponent).append(" is miss.");
+                feedback.append(" It should be ").append(standardCitation.get(standardComponent)).append(".");
             }
         }
         if (miss) return feedback.toString();
@@ -348,6 +353,9 @@ public class CitationProcessUtil {
                 feedback.append("The order of component of your citation is wrong. Correct order is: ").append(convertArrayToString(standardCitationComponent, ","));
                 break;
             }
+        }
+        if(feedback.isEmpty()){
+            feedback.append("No errors");
         }
         return feedback.toString();
     }
@@ -430,7 +438,7 @@ public class CitationProcessUtil {
 
     public static String authorsPartFeedback(String[] inputAuthorsArray, String[] standardAuthorsArray) {
         StringBuilder feedback = new StringBuilder();
-        String spiltRules = "And check that you are properly separating authors with commas and connecting the last two authors with and or &.";
+        String spiltRules = "Check that you are properly separating authors with commas and connecting the last two authors with and or &.";
         // 遍历标准引用中的作者名，确认是否都在用户的输入中
         for (String standard : standardAuthorsArray) {
             boolean match = false;
@@ -441,6 +449,16 @@ public class CitationProcessUtil {
                 }
             }
             if (!match) feedback.append(standard).append(". is missed. ");
+        }
+        for (String input : inputAuthorsArray) {
+            boolean match = false;
+            for (String standard : standardAuthorsArray) {
+                if (standard.equals(input)) {
+                    match = true;
+                    break;
+                }
+            }
+            if (!match) feedback.append(input).append(". is not the author. ");
         }
         if (!feedback.isEmpty()) {
             //提醒分割规则
@@ -456,10 +474,6 @@ public class CitationProcessUtil {
                     break;
                 }
             }
-        }
-        // feedback仍为空，说明一切正常 完美匹配
-        if (feedback.isEmpty()) {
-            feedback.append("Authors part is correct.");
         }
         return feedback.toString();
     }
@@ -497,15 +511,13 @@ public class CitationProcessUtil {
         String journal1 = "Ada, A.F., 2007. A Lifetime of Learning to Teach. Journal of Latinos & Education, [e-journal] 6 (2), pp.103-118. 10.1080/15348430701304658.";
         String journal3 = "Al-Benna, S., Rajgarhia, P., Ahmed, S. and Sheikh, Z., 2009. Accuracy of references in burns journals? Burns, 35(5), pp.677-680.";
         String journal4 = "Das, K. and Behera, R.N., 2017. A survey on machine learning: concept, algorithms and applications. International Journal of Innovative Research in Computer and Communication Engineering, 5(2), pp.1301-1309.";
-
         String journal2 = "Boon, S., Johnston, B. and Webber, S., 2007. A phenomenographic study of English faculty's conceptions of information literacy. Journal of Documentation, [e-journal] 63(2), pp.204-228. https://doi. org/10.1108/00220410710737187.";
-        String journal2_change = "Bon, S., Johston, B. and Webber, S., 2016. A phenomenographic study of English faculty's concepons of information literacy. Journal of Documentation, [e-journal] 63(26), pp.204-2828. https://doi. org/10.1108/00220410710737187.";
-
+        String journal2_change = "A phenomenographic study of English faculty's conceptions of information literacy. Journal of Documentation, [e-journal] 63(2), pp.204-228. https://doi. org/10.1108/00220410710737187.";
         List<String> total = Arrays.asList(journal1, journal2, journal3, journal4, conTest1, conTest2, conTest4, conTest5, ebook1, newspaper1, book1, book2, book3, book4);
 //        for(String s:total){
 //            spiltStandardHarvardCitation(s);
 //        }
 //        spiltStandardHarvardCitation(book2);
-        processUserHarvardCitation(journal2_change, spiltStandardHarvardCitation(journal2));
+        String s=processUserHarvardCitation(journal2_change, spiltStandardHarvardCitation(journal2));
     }
 }
